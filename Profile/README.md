@@ -31,8 +31,9 @@ Copy this file to your Powershell profile path.
 **Version: 0.2**
 
 ### History
-- Sept 16, 2021: Creation
 - Dec 12, 2021: Add Exchange connection and functions for Exchange
+- Sept 16, 2021: Creation
+
 
 ### Using the script
 Copy this file to a new folder named "Powershell-Profile" under module folder of your powershell profile.
@@ -98,10 +99,4 @@ Disable-BasicAuth
 ## Credits
 Mathias Dumont
 
-## License
-A short snippet describing the license (MIT, Apache, etc.)
 
-## Donate
-If you appreciate my work and you want to buy me a beer, send :
-* Bitcoin to <b>bc1qj7592q9xqn2x6k06c2amglyaq0lyyntvvdwz297n9pmjszz4njcs85tkl2</b>
-* Ethereum to <b>0x72B0be70715914F4D76e4d78a70F97854a6c4934</b>
