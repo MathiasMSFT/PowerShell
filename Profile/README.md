@@ -15,6 +15,7 @@ Contains the path of transcript file.
 Contains each profile you want to propose. For each profile, configure UPN, default path, privilege or role of account, color for this profile.
 Example (PowerShell 5): C:\Users\myprofile\Documents\WindowsPowershell.
 Example (PowerShell 7): C:\Users\myprofile\Documents\Powershell.
+
 ![image](https://user-images.githubusercontent.com/94542446/149010446-99063b0e-86cf-470d-acd9-286c383befec.png)
 
 
