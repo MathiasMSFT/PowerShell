@@ -42,7 +42,7 @@ Example (PowerShell 7): C:\Users\myprofile\Documents\Powershell\Modules\Powershe
 
 ## How to use
 ### Function LoadProfile
-To load your profile, execute "loadprofile" command let.
+To load your profile, execute "loadprofile" command let and select your profile.
 ```PowerShell
 loadprofile
 ```
