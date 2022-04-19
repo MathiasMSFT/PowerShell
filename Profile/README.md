@@ -102,4 +102,5 @@ Disable-BasicAuth
 ## Credits
 Mathias Dumont
 
-
+# Disclaimer
+See [DISCLAIMER](./DISCLAIMER.md).
