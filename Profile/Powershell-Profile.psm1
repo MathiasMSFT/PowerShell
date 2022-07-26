@@ -133,3 +133,35 @@ PS> StopTranscript
 #>
     stop-Transcript
 }
+Function InvokeScript {
+<#
+.SYNOPSIS
+Invoke a script.
+
+.DESCRIPTION
+Invoke a script.
+Execute a script stored somewhere (GitHub)
+
+.EXAMPLE
+PS> InvokeScript -Url ''
+
+.NOTES
+....
+#>
+param (
+    [Parameter(Mandatory=$true, Position=0)]
+    $Url
+)
+
+
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    $ScriptFromGitHub = Invoke-WebRequest $Url
+    Invoke-Expression $($ScriptFromGitHub.Content)
+}
+
+
+
+@{
+# Version number of this module.
+ModuleVersion = '1.1'
+}

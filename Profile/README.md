@@ -31,9 +31,10 @@ Copy this file to your Powershell profile path.
 
 ## Powershell-Profile.psm1
 ### Current Version
-**Version: 0.2**
+**Version: 0.3**
 
 ### History
+- July 26, 2022: Add InvokeScript function
 - Dec 12, 2021: Add Exchange connection and functions for Exchange
 - Sept 16, 2021: Creation
 
@@ -98,6 +99,14 @@ To disconnect to EXO
 ```PowerShell
 Disable-BasicAuth
 ```
+
+### Function InvokeScript
+Execute a script stored in GitHub
+```PowerShell
+InvokeScript -Url 'https://raw.githubusercontent.com/MathiasMSFT/PowerShell/master/DO%20NOT%20USE/Do-Not-Use.ps1'
+```
+
+![image](./images/InvokeScript.png)
 
 ## Credits
 Mathias Dumont
