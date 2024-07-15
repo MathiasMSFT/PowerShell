@@ -13,10 +13,14 @@ PS> LoadProfile
 .NOTES
 ....
 #>
+    Param(
+        [Parameter(Mandatory=$false)][string]$TenantName
+    )
+
     Try{
         stop-transcript|out-null
-      }
-      Catch [System.InvalidOperationException]{}
+    }
+    Catch [System.InvalidOperationException]{}
 
     ## Variables
     $UserName = [Environment]::UserName
@@ -25,16 +29,26 @@ PS> LoadProfile
     ## Load JSON
     $Profiles = Get-Content -Raw -Path "$PowershellProfilePath\Modules\Powershell-Profile\Config.json" | ConvertFrom-Json
     $Global:TranscriptFolder = $Profiles.TranscriptFolder
-    $Global:SelectedProfile = $Profiles.List | Out-Gridview -OutputMode Single
+
+    If ($TenantName) {
+        $Global:SelectedProfile = $Profiles.List | Where TenantName -eq $TenantName
+    }
+    Else {
+        $Global:SelectedProfile = $Profiles.List | Out-Gridview -OutputMode Single
+    }
+
+    # $Global:SelectedProfile = $Profiles.List | Out-Gridview -OutputMode Single
     If (($($SelectedProfile.Account).Count) -ne 1) {
         Write-Host "Select one option" -ForegroundColor Red
     } Else {
 
         #####################################################
-        $Histo = (" Current : V0.1
+        $Histo = (" Current : V0.4
         Powershell Profile $($SelectedProfile.TenantName)
         v0.1 - Creation - 2021-07-30 - Mathias Dumont
         v0.2 - New function - 2021-09-21 - Mathias Dumont
+        v0.3 - New parameter TenantName - 2021-10-27 - Mathias Dumont / Steve Gauvin
+        v0.4 - Adding list of functions in start display - 2021-10-27 - Mathias Dumont / Steve Gauvin
         ")
         #####################################################
 
@@ -62,6 +76,14 @@ PS> LoadProfile
 
         $host.PrivateData.ErrorForegroundColor = "green"
 
+        If ($TenantName) {
+            $Global:SelectedProfile = $Profiles.List | Where TenantName -eq $TenantName
+        }
+        Else {
+            $Global:SelectedProfile = $Profiles.List | Out-Gridview -OutputMode Single
+        }
+
+
         Write-Host -ForegroundColor yellow @"
 Profil personalisé pour $($SelectedProfile.TenantName) - Bienvenue $UserName
 ===============================
@@ -69,6 +91,13 @@ Profil personalisé pour $($SelectedProfile.TenantName) - Bienvenue $UserName
         Tenant: $($SelectedProfile.TenantName)
         Account: $($SelectedProfile.Account)
         Role: $($SelectedProfile.Role)
+
+        Functions:
+            - startTranscript
+            - stopTranscript
+            - ConnectAAD
+            - InvokeScript
+
 
 ===============================
        
@@ -81,7 +110,6 @@ Session démarrée à : $(get-date)
         Set-Location -Path $($SelectedProfile.Folder)
     }
 }
-
 Function startTranscript() {
 <#
 .SYNOPSIS
@@ -158,10 +186,14 @@ param (
     $ScriptFromGitHub = Invoke-WebRequest $Url
     Invoke-Expression $($ScriptFromGitHub.Content)
 }
-
+Function GetDeviceCodeFlow {
+    # Retrieve who does a DeviceCode flow
+    Connect-MgGraph -Scopes AuditLog.Read.All
+    Get-MgBetaAuditLogSignIn -Filter "AuthenticationProtocol eq 'deviceCode'"
+}
 
 
 @{
 # Version number of this module.
-ModuleVersion = '1.1'
+ModuleVersion = '1.2'
 }

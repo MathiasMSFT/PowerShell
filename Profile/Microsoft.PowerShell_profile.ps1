@@ -15,12 +15,14 @@ Function Prompt {
     ## Check if RunAs Admin => Elevated
     $IsAdmin = (New-Object Security.Principal.WindowsPrincipal ([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 
+    $CurrentFolder = (Get-Location).Path
+
     ## Build CMD Prompt
     Write-Host ""
     Write-host ($(if ($IsAdmin) { 'Elevated ' } else { '' })) -BackgroundColor DarkRed -ForegroundColor White -NoNewline
     Write-Host " ENV:$($SelectedProfile.TenantName) " -BackgroundColor $($SelectedProfile.Color) -ForegroundColor DarkBlue -NoNewline
     Write-Host " Role:$($SelectedProfile.Role) " -BackgroundColor Magenta -ForegroundColor DarkBlue -NoNewline
-    Write-Host " $($SelectedProfile.Folder) "  -ForegroundColor White -BackgroundColor DarkGray -NoNewline
+    Write-Host " $CurrentFolder "  -ForegroundColor White -BackgroundColor DarkGray -NoNewline
     return "> "
 }
 
