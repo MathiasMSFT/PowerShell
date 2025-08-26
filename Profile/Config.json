@@ -3,38 +3,17 @@
     "List" : [
     {
         "TenantName": "Microsoft",
-        "Account": "mdumont@microsoft.com",
+        "Account": "mat@contoso.com",
         "Role": "User",
         "Folder": "C:\\GitHub\\Develop",
         "Color" : "Green"
     },
     {
-        "TenantName": "IdentityMS",
-        "Account": "mathias.dumont@identityms.onmicrosoft.com",
-        "Role": "GlobalAdmin",
-        "Folder": "C:\\GitHub\\Develop",
-        "Color" : "Cyan"
-    },
-    {
-        "TenantName": "IdentityMS",
-        "Account": "myuser@identityms.onmicrosoft.com",
-        "Role": "User",
-        "Folder": "C:\\GitHub\\Develop",
-        "Color" : "Cyan"
-    },
-    {
-        "TenantName": "Labmat",
-        "Account": "mathias.dumont@labmat.onmicrosoft.com",
+        "TenantName": "Fabrikam",
+        "Account": "mathias.dumont@fabrikam.onmicrosoft.com",
         "Role": "GlobalAdmin",
         "Folder": "C:\\GitHub\\Develop",
         "Color" : "Yellow"
-    },
-    {
-        "TenantName": "MSSS",
-        "Account": "mathias.dumont.contractuel@msss.gouv.qc.ca",
-        "Role": "User",
-        "Folder": "C:\\GitHub\\Develop",
-        "Color" : "Gray"
     }
 ]
 }
